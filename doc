@@ -1,0 +1,24 @@
+> **ai decision support used:** a deep learning tool (not fda-cleared, research use) was used to assist pattern recognition in [cxr / ecg]. model suggested [possible right lower lobe opacity / st elevation in v2–v3].
+> findings reviewed and interpreted by clinician.
+> clinical correlation performed with patient’s history and exam.
+> final impression and management plan determined by clinician judgment.
+> [radiology / cardiology] review requested for confirmation.
+
+---
+
+> **use of experimental ai tool:**
+> an investigational deep learning model (non-validated, non-fda/ce-approved) was used as *decision support* during interpretation of [test].
+> the model output was [summarize briefly].
+> output reviewed critically; not used as sole basis for diagnosis or treatment.
+> physician independently evaluated findings and formulated plan accordingly.
+> limitations of model (experimental status, lack of external validation) acknowledged.
+> follow-up arranged with [radiology / cardiology / confirmatory study] as appropriate.
+
+---
+
+> clinical interpretation supported by ai-assisted analysis (experimental, not diagnostic).
+> final assessment and management based on clinician’s independent judgment.
+
+---
+
+> patient informed that ai-based analytical aid was used as part of decision support. purpose and limitations explained; patient verbalized understanding.
