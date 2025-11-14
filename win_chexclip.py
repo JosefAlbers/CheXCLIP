@@ -127,6 +127,27 @@ def stage2_findings(model, tok, device, f_img, findings=None,
         prompts.append(no)
         index_map.append((name, False))
 
+    cache_path = 'jj_txt_cache.pt'
+    need_recompute = True
+
+    if os.path.exists(cache_path):
+        data = torch.load(cache_path, map_location="cpu")
+        saved_prompts = data.get("prompts", None)
+
+        if saved_prompts == prompts:
+            f_txt = data["feats"].to(device)
+            need_recompute = False
+
+    if need_recompute:
+        f_txt = encode_texts(model, tok, device, prompts,
+                             context_length=context_length,
+                             batch_size=batch_size)
+        torch.save({
+            "prompts": prompts,          
+            "feats": f_txt.detach().cpu(), 
+        }, cache_path)
+        f_txt = f_txt.to(device)
+
     f_txt = encode_texts(model, tok, device, prompts,
                          context_length=context_length,
                          batch_size=batch_size)
@@ -154,6 +175,7 @@ def stage2_findings(model, tok, device, f_img, findings=None,
 
     return dict(sorted(results.items(), key=lambda x: x[1], reverse=True))
 
+@torch.inference_mode()
 def analyze_image(img_pil, model, preprocess, tok, device):
     f_img = encode_image(model, preprocess, img_pil, device)
     
